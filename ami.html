@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesan Untuk Amiii ♥</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(180deg,#ffb6c1,#ff69b4);
+  color:white;
+  overflow-x:hidden;
+  perspective:1200px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+
+/* CARD */
+.container{
+  max-width:900px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+.card{
+  background:rgba(255,255,255,.14);
+  backdrop-filter:blur(12px);
+  border-radius:26px;
+  padding:50px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.35);
+  transform-style: preserve-3d;
+  animation:cardFloat 6s ease-in-out infinite;
+  text-align:center;
+  cursor:pointer;
+  position:relative;
+}
+@keyframes cardFloat{
+  0%,100%{transform:translateY(0) rotateX(0deg)}
+  50%{transform:translateY(-12px) rotateX(2deg)}
+}
+
+/* CARD INITIAL TEXT */
+#cardText{
+  font-size:1.5rem;
+  font-weight:600;
+  line-height:1.5;
+}
+
+/* LONG TEXT */
+.line{
+  opacity:0;
+  transform:translateY(12px);
+  transition:all .8s ease;
+  margin-bottom:18px;
+  line-height:1.7;
+  font-size:1.05rem;
+}
+.line.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* FLOATING HEARTS */
+.heart{
+  position:fixed;
+  bottom:0;
+  font-size:18px;
+  opacity:.8;
+  animation:rise linear forwards;
+  pointer-events:none;
+  user-select:none;
+}
+@keyframes rise{
+  0%{
+    transform:translateY(0) scale(1);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-120vh) scale(1.6);
+    opacity:0;
+  }
+}
+
+/* SURPRISE LOVE */
+#surprise{
+  display:none;
+  text-align:center;
+  font-size:80px;
+  font-weight:bold;
+  margin-top:20px;
+  animation:pulse 1s infinite alternate;
+  position:relative;
+}
+#surprise span.you{
+  display:block;
+  font-size:40px;
+  margin-top:-50px;
+  color:white;
+  text-shadow:0 0 25px white;
+}
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.1);}
+  100%{transform:scale(1);}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="card" id="startCard">
+    <!-- INITIAL CARD TEXT -->
+    <div id="cardText">
+      Pesan dari pacal ami<br>
+      ♥️<br>
+      Klik LOVE-nya buat stel lagu dan baca pesannya
+    </div>
+
+    <!-- LONG TEXT -->
+    <div id="text" style="display:none;">
+      <div class="line">PESAN BUAT AMI TERCINTA😘♥️️</div>
+      <div class="line">halo selamat pagiii amii ku cintaaa ♥️</div>
+      <div class="line">awali hari dengan semangat yaa sayang, kalo ada apa-apa buat hari ini harus bilang ke aku oteeey sayang.</div>
+      <div class="line">kalo kamu nak telpon or vc bilang yaaw kapan aja bisa kok.</div>
+      <div class="line">jadi kan aku tempat pertama kali kamu untuk cerita semuanya keluh kesah kamu.</div>
+      <div class="line">nihh nihh aku ngga butuh google maps kalo kemana-mana.</div>
+      <div class="line">soalnya kalo aku nyasar ke hati kamu mulu eak hehe.</div>
+      <div class="line">pokoknya aku tuh all in my love to youu.</div>
+      <div class="line">jatuh cinta sama kamu tuh beda banget.</div>
+      <div class="line">kamu special banget makanya aku selalu bangga punya kamu.</div>
+      <div class="line">bahkan kalo mamah nanya juga aku jawab excited.</div>
+      <div class="line">nanya tentang kamu maksudnya sayang ♥️😘</div>
+      <div class="line">jadi kan aku tempat ternyaman kamu okeiii.</div>
+      <div class="line">aku akan usahakan kamu nyaman ke aku.</div>
+      <div class="line">pokoknya kita harus main okei perpulangan ini oteeiiii sayang.</div>
+      <div class="line">lovee youuuu so muchhhhh 😋😘♥️♥️♥️</div>
+      <div class="line">sehat sehat cantik akuuuh.</div>
+      <div class="line">jangan lupa makan yaaaw on time oteiii.</div>
+    </div>
+
+    <!-- SURPRISE LOVE -->
+    <div id="surprise">
+      ♥️
+      <span class="you">YOU</span>
+    </div>
+  </div>
+</div>
+
+<!-- MUSIC IFRAME -->
+<iframe id="music" src="https://www.youtube.com/embed/2Vv-BfVoq4g" allow="autoplay" style="display:none;"></iframe>
+
+<script>
+// CLICK CARD FLOW
+document.getElementById('startCard').addEventListener('click', function(){
+  // 1️⃣ Play music
+  const iframe = document.getElementById('music');
+  iframe.src = "https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1";
+
+  // 2️⃣ Hide initial card text
+  document.getElementById('cardText').style.display='none';
+
+  // 3️⃣ Show long text
+  const textDiv = document.getElementById('text');
+  textDiv.style.display='block';
+  const lines = document.querySelectorAll('.line');
+  let i=0;
+  function showLines(){
+    if(i<lines.length){
+      lines[i].classList.add('show');
+      i++;
+      setTimeout(showLines,700);
+    } else {
+      // 4️⃣ Tampilkan LOVE surprise di akhir
+      document.getElementById('surprise').style.display='block';
+    }
+  }
+  showLines();
+});
+
+// FLOATING HEARTS
+function heart(){
+  const h = document.createElement('div');
+  h.className='heart';
+  h.innerText='♥';
+  h.style.left=Math.random()*100+'vw';
+  h.style.fontSize = (14 + Math.random()*10)+'px'; // variasi ukuran
+  h.style.animationDuration = (4 + Math.random()*3)+'s'; // variasi speed
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),7000);
+}
+setInterval(heart,400);
+</script>
+
+</body>
+</html>
